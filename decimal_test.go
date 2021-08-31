@@ -3081,6 +3081,18 @@ func TestTan(t *testing.T) {
 	}
 }
 
+func TestIsNil(t *testing.T) {
+	for _, x := range testTable {
+		d := NewFromFloat(x.float)
+		if d.IsNil() && x.short != "0" {
+			t.Errorf("Expected %s not to be nil", x.short)
+		}
+		if !d.IsNil() && x.short == "0" {
+			t.Errorf("Expected %s to be nil", x.short)
+		}
+	}
+}
+
 func ExampleNewFromFloat32() {
 	fmt.Println(NewFromFloat32(123.123123123123).String())
 	fmt.Println(NewFromFloat32(.123123123123123).String())

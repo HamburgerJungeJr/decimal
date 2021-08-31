@@ -1694,3 +1694,10 @@ func (d Decimal) Tan() Decimal {
 	}
 	return y
 }
+
+// IsNil returns whether the decimal is nil as defined by int.
+// True is returned if the decimal is equal to zero.
+// This is needed for serialization to have omitempty functionality.
+func (d Decimal) IsNil() bool {
+	return d.Equal(Zero)
+}
